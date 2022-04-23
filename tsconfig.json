@@ -18,12 +18,12 @@
     "baseUrl": "",
     "paths": {
       "@/*": ["src/*"],
-			"assets/*": ["src/assets/*"],
-			"components/*": ["src/components/*"],
+      "assets/*": ["src/assets/*"],
+      "components/*": ["src/components/*"],
       "layouts/*": ["src/layouts/*"],
-			"uitls/*": ["src/uitls/*"],
-			"views/*": ["src/views/*"],
-			"router/*": ["src/router/*"]
+      "uitls/*": ["src/uitls/*"],
+      "views/*": ["src/views/*"],
+      "router/*": ["src/router/*"]
     }
   },
   "include": ["src"],

@@ -1,14 +1,14 @@
-import React, { lazy, Suspense, Component } from 'react'
-import {
-  Navigate,
-  useRoutes,
-} from "react-router-dom";
+import { lazy } from 'react';
+// import {
+//   Navigate,
+//   useRoutes,
+// } from "react-router-dom";
 // import { Spin } from 'antd'
 // import { BasicLayout } from '@/layouts'
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+// import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 // import SuspenseCom from './SuspenseCom'
 
-import { IRoute } from './config'
+import { IRoute } from './config';
 
 const routesArr = [
   {
@@ -26,7 +26,7 @@ const routesArr = [
   {
     path: '/ad-audience',
     name: 'ad-audience',
-    meta: { title: '广告受众', icon: 'AppstoreOutlined'},
+    meta: { title: '广告受众', icon: 'AppstoreOutlined' },
     component: lazy(() => import('@/views/audience/index')),
   },
   {
@@ -35,7 +35,7 @@ const routesArr = [
     meta: { title: '系统管理', icon: 'SettingOutlined' },
     component: lazy(() => import('@/views/systems/index')),
   },
-]
+];
 
 const routes: IRoute[] = [
   {
@@ -43,18 +43,18 @@ const routes: IRoute[] = [
     name: 'BasicLayout',
     component: lazy(() => import('@/layouts/BasicLayout')),
     redirect: '/ad-overview',
-    meta: { title: '', icon: ''},
+    meta: { title: '', icon: '' },
     routes: [
       ...routesArr,
       {
         path: '*',
         name: 'NotFound',
-        meta: { title: '404', icon: ''},
+        meta: { title: '404', icon: '' },
         component: lazy(() => import('@/views/error/404')),
-      }
-    ]
+      },
+    ],
   },
-]
+];
 
 // interface Props {
 //   /** 自定义渲染组件 */
@@ -88,4 +88,4 @@ const routes: IRoute[] = [
 //   return element
 // }
 
-export { routes, routesArr }
+export { routes, routesArr };
