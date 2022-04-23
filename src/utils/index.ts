@@ -1,2 +1,2 @@
-import { lazy } from 'react';
+import react from 'react';
 export {};
