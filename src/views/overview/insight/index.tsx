@@ -1,11 +1,9 @@
-import React from 'react'
+// import React from 'react';
 
-type Props = {}
+// type Props = {}
 
-const Insight = (props: Props) => {
-  return (
-    <div>insight</div>
-  )
-}
+const Insight = () => {
+  return <div>insight</div>;
+};
 
-export default Insight
+export default Insight;

@@ -1,7 +1,7 @@
-import Navbar from "./Navbar";
-import SiderBar from "./SiderBar";
+import Navbar from './Navbar'
+import SiderBar from './SiderBar'
 
 export {
-  Navbar,
-  SiderBar
+	Navbar,
+	SiderBar
 }

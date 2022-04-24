@@ -1,9 +1,9 @@
-import { FunctionComponent, ComponentClass } from 'react';
+// import { FunctionComponent, ComponentClass } from 'react';
 
-interface IComponent extends FunctionComponent, ComponentClass {
-  getInitialProps?: Function;
-  preload?: () => Promise<any>;
-}
+// interface IComponent extends FunctionComponent, ComponentClass {
+//   getInitialProps?: Function;
+//   preload?: () => Promise<any>;
+// }
 
 interface Meta {
   title: string;
@@ -40,8 +40,4 @@ interface RouterInterface {
 //   children?: IRoute[];
 // }
 
-export {
-  type Meta,
-  type RouterInterface,
-  type IRoute
-}
+export { type Meta, type RouterInterface, type IRoute };

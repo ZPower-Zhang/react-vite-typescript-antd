@@ -1,25 +1,31 @@
-import { useState, Suspense, lazy, Component } from 'react'
-import {
-  BrowserRouter as Router,
-  Navigate,
-  useRoutes,
-} from "react-router-dom";
-import { Layout, Spin } from 'antd'
+import { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Navigate, useRoutes } from 'react-router-dom';
+import { Layout, Spin } from 'antd';
 // import { routes, RenderRoutes } from '@/router';
 // import { BasicLayout } from '@/layouts'
 
-const BasicLayout = lazy(() => import('@/layouts/BasicLayout'))
-const Insight = lazy(() => import('views/overview/insight'))
-const Assets = lazy(() => import('views/assets/index'))
-const Audience = lazy(() => import('views/audience/index'))
-const System = lazy(() => import('views/systems/index'))
-const NotFound = lazy(() => import('views/error/404'))
+const BasicLayout = lazy(() => import('@/layouts/BasicLayout'));
+const Insight = lazy(() => import('views/overview/insight'));
+const Assets = lazy(() => import('views/assets/index'));
+const Audience = lazy(() => import('views/audience/index'));
+const System = lazy(() => import('views/systems/index'));
+const NotFound = lazy(() => import('views/error/404'));
 
 const RenderRoutes = () => {
   const ele = useRoutes([
     {
       path: '/',
-      element: <Suspense fallback={<div><Spin /></div>}><BasicLayout /></Suspense>,
+      element: (
+        <Suspense
+          fallback={
+            <div>
+              <Spin />
+            </div>
+          }
+        >
+          <BasicLayout />
+        </Suspense>
+      ),
       children: [
         {
           path: 'home',
@@ -27,32 +33,82 @@ const RenderRoutes = () => {
         },
         {
           path: '/ad-overview',
-          element: <Suspense fallback={<div><Spin /></div>}><Insight /></Suspense>,
+          element: (
+            <Suspense
+              fallback={
+                <div>
+                  <Spin />
+                </div>
+              }
+            >
+              <Insight />
+            </Suspense>
+          ),
         },
         {
           path: '/ad-assets',
-          element: <Suspense fallback={<div><Spin /></div>}><Assets /></Suspense>,
+          element: (
+            <Suspense
+              fallback={
+                <div>
+                  <Spin />
+                </div>
+              }
+            >
+              <Assets name="assets" />
+            </Suspense>
+          ),
         },
         {
           path: '/ad-audience',
-          element: <Suspense fallback={<div><Spin /></div>}><Audience /></Suspense>,
+          element: (
+            <Suspense
+              fallback={
+                <div>
+                  <Spin />
+                </div>
+              }
+            >
+              <Audience name="audience" />
+            </Suspense>
+          ),
         },
         {
           path: '/systems',
-          element: <Suspense fallback={<div><Spin /></div>}><System /></Suspense>,
+          element: (
+            <Suspense
+              fallback={
+                <div>
+                  <Spin />
+                </div>
+              }
+            >
+              <System />
+            </Suspense>
+          ),
         },
         {
           path: '*',
-          element: <Suspense fallback={<div><Spin /></div>}><NotFound /></Suspense>,
-        }
+          element: (
+            <Suspense
+              fallback={
+                <div>
+                  <Spin />
+                </div>
+              }
+            >
+              <NotFound />
+            </Suspense>
+          ),
+        },
       ],
-    }
-  ])
-  return ele
-}
+    },
+  ]);
+  return ele;
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <Layout className={'layout-container'}>
@@ -60,7 +116,7 @@ function App() {
         <RenderRoutes />
       </Router>
     </Layout>
-  )
+  );
 }
 
-export default App
+export default App;

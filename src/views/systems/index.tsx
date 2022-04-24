@@ -1,11 +1,9 @@
-import React from 'react'
+// import React from 'react';
 
-type Props = {}
+// type Props = {}
 
-const Systems = (props: Props) => {
-  return (
-    <div>index</div>
-  )
-}
+const Systems = () => {
+  return <div>index</div>;
+};
 
-export default Systems
+export default Systems;
