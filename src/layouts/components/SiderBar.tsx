@@ -1,40 +1,39 @@
-import { FC, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Layout, Menu } from 'antd';
+import { FC, useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { Layout, Menu } from 'antd'
 import {
   MailOutlined,
   AppstoreOutlined,
   SettingOutlined,
-} from '@ant-design/icons';
-import { routesArr } from '@/router/index';
-import { RouterInterface, IRoute } from '@/router/config';
+} from '@ant-design/icons'
+import { routesArr } from '@/router/index'
+import { RouterInterface, IRoute } from '@/router/config'
 
-const { Item, SubMenu } = Menu;
+const { Item, SubMenu } = Menu
 interface Props {
-  collapsed: boolean;
+  collapsed: boolean
+}
+
+const renderIcon = (icon: string) => {
+  switch (icon) {
+    case 'MailOutlined':
+      return <MailOutlined />
+      break
+    case 'AppstoreOutlined':
+      return <AppstoreOutlined />
+    case 'SettingOutlined':
+      return <SettingOutlined />
+      break
+  }
 }
 
 const SiderBar: FC<any> = (props: Props) => {
-  const { collapsed = false } = props;
-  const [menuTreeNode, setMenuTreeNode] = useState(null);
-  const [theme] = useState<'light' | 'dark'>('dark');
+  const { collapsed = false } = props
+  const [menuTreeNode, setMenuTreeNode] = useState(null)
+  const [theme] = useState<'light' | 'dark'>('dark')
   // const changeTheme = (value: boolean) => {
   //   setTheme(value ? 'dark' : 'light');
   // };
-
-  const renderIcon = (icon: string) => {
-    switch (icon) {
-      case 'MailOutlined':
-        return <MailOutlined />;
-        break;
-      case 'AppstoreOutlined':
-        return <AppstoreOutlined />;
-        break;
-      case 'SettingOutlined':
-        return <SettingOutlined />;
-        break;
-    }
-  };
 
   const renderMenu = (data: IRoute) => {
     return data.map((item: RouterInterface) => {
@@ -47,9 +46,9 @@ const SiderBar: FC<any> = (props: Props) => {
           >
             {renderMenu(item.routes)}
           </SubMenu>
-        );
+        )
       }
-      if (item['hidden']) return null;
+      if (item['hidden']) return null
       return (
         <Item
           key={item.path}
@@ -60,13 +59,13 @@ const SiderBar: FC<any> = (props: Props) => {
             {item.meta.title}
           </Link>
         </Item>
-      );
-    });
-  };
+      )
+    })
+  }
   useEffect(() => {
-    const treeNode = renderMenu(routesArr);
-    setMenuTreeNode(treeNode);
-  }, []);
+    const treeNode = renderMenu(routesArr)
+    setMenuTreeNode(treeNode)
+  }, [])
   return (
     <Layout.Sider trigger={null} width={256} collapsible collapsed={collapsed}>
       <div className="logo" />
@@ -74,7 +73,7 @@ const SiderBar: FC<any> = (props: Props) => {
         {menuTreeNode}
       </Menu>
     </Layout.Sider>
-  );
-};
+  )
+}
 
-export default SiderBar;
+export default SiderBar

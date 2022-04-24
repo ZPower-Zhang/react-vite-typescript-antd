@@ -1,4 +1,5 @@
 module.exports = {
+  "root": true,
 	'env': {
 		'browser': true,
 		'es2021': true,
@@ -16,14 +17,16 @@ module.exports = {
 			'jsx': true
 		},
 		'ecmaVersion': 'latest',
-		'sourceType': 'module',
+    'sourceType': 'module',
+    'project': ['./tsconfig.json']
 	},
 	'plugins': [
 		'react',
-		'@typescript-eslint'
+    '@typescript-eslint',
+    'prettier'
 	],
 	'rules': {
-		'indent': 0,
+		'indent': 'off',
 		'linebreak-style': [
 			'error',
 			'unix'
@@ -33,7 +36,8 @@ module.exports = {
 			'single'
 		],
     'semi': 0,
-    'no-var': 0, //禁用var，用let和const代替
+    'no-var': 2, //禁用var，用let和const代替
+    'space-before-function-paren': 'off',
     '@typescript-eslint/no-explicit-any': 0  //关闭any类型警告:
 		// 'no-var': 0, // 禁止使用 var
 	}

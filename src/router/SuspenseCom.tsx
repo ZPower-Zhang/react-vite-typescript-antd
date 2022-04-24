@@ -6,9 +6,9 @@ type Props = {
 }
 
 const SuspenseCom = (props: Props) => {
-	const { Comp } = props
-	return (
-		<Suspense fallback={<div><Spin /></div>}><Comp/></Suspense>
-	)
+  const { Comp } = props
+  return (
+    <Suspense fallback={<div><Spin /></div>}><Comp/></Suspense>
+  )
 }
 export default SuspenseCom
