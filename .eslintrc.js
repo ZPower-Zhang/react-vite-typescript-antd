@@ -37,8 +37,10 @@ module.exports = {
 		],
     'semi': 0,
     'no-var': 2, //禁用var，用let和const代替
+    'prefer-const': 0,
     'space-before-function-paren': 'off',
-    '@typescript-eslint/no-explicit-any': 0  //关闭any类型警告:
+    '@typescript-eslint/no-explicit-any': 0,  //关闭any类型警告:
+    "@typescript-eslint/no-non-null-assertion": 0
 		// 'no-var': 0, // 禁止使用 var
 	}
 }
