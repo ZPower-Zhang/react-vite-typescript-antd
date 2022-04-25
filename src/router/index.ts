@@ -1,12 +1,5 @@
 import { lazy } from 'react'
-// import {
-//   Navigate,
-//   useRoutes,
-// } from "react-router-dom";
-// import { Spin } from 'antd'
-// import { BasicLayout } from '@/layouts'
-// import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
-// import SuspenseCom from './SuspenseCom'
+import { BasicLayout, RouterView } from '@/layouts'
 
 import { IRoute } from './config'
 
@@ -14,16 +7,19 @@ const routesArr = [
   {
     path: '/home',
     name: 'homepage',
+    component: RouterView,
     meta: { title: '首页', icon: 'HomeOutlined' },
     routes: [
       {
         path: '/home/overview',
         name: 'overview',
+        component: lazy(() => import('views/homepage/overview')),
         meta: { title: '概览', icon: '' },
       },
       {
         path: '/home/analysis',
         name: 'analysis',
+        component: lazy(() => import('views/homepage/analysis')),
         meta: { title: '分析', icon: '' },
       },
     ],
@@ -31,26 +27,31 @@ const routesArr = [
   {
     path: '/assets',
     name: 'assets',
+    component: lazy(() => import('views/assets/index')),
     meta: { title: '资产', icon: 'MailOutlined' },
   },
   {
     path: '/audience',
     name: 'audience',
+    component: lazy(() => import('views/audience/index')),
     meta: { title: '受众', icon: 'AppstoreOutlined' },
   },
   {
     path: '/systems',
     name: 'systems',
+    component: RouterView,
     meta: { title: '系统管理', icon: 'SettingOutlined' },
     routes: [
       {
         path: '/systems/permission',
         name: 'permission',
+        component: lazy(() => import('views/systems/permission')),
         meta: { title: '权限', icon: '' },
       },
       {
         path: '/systems/user-info',
         name: 'userInfo',
+        component: lazy(() => import('views/systems/user')),
         meta: { title: '用户信息', icon: '' },
       },
     ],
@@ -61,8 +62,8 @@ const routes: IRoute[] = [
   {
     path: '/',
     name: 'BasicLayout',
-    component: lazy(() => import('@/layouts/BasicLayout')),
-    redirect: '/ad-overview',
+    component: BasicLayout,
+    redirect: '',
     meta: { title: '', icon: '' },
     routes: [
       ...routesArr,

@@ -5,10 +5,8 @@ import { HomeOutlined, MailOutlined, AppstoreOutlined, SettingOutlined } from '@
 import { routesArr } from '@/router/index'
 import { RouterInterface, IRoute } from '@/router/config'
 
-// const { Item, SubMenu } = Menu
-
 type MenuItem = Required<MenuProps>['items'][number]
-interface Props {
+type Props = {
   collapsed: boolean
 }
 
@@ -40,10 +38,9 @@ let items: MenuProps['items'] = [
 
 const rootSubmenuKeys = ['/home', '/systems']
 
-const SiderBar: FC<any> = (props: Props) => {
+const SiderBar: FC<Props> = ({ collapsed = false }) => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
-  const { collapsed = false } = props
   const [openKeys, setOpenKeys] = useState(['/home'])
   const [currentKey, setCurrentKey] = useState('/home/overview')
   const [theme] = useState<'light' | 'dark'>('dark')
@@ -65,9 +62,15 @@ const SiderBar: FC<any> = (props: Props) => {
   }
 
   const handleLocation = (path: string) => {
-    const subPath = '/' + path.split('/')[1]
-    setOpenKeys([subPath])
-    setCurrentKey(path)
+    if (!path || path === '/') {
+      setOpenKeys(['/home'])
+      setCurrentKey('/home/overview')
+      navigate('/home/overview')
+    } else {
+      const subPath = '/' + path.split('/')[1]
+      setOpenKeys([subPath])
+      setCurrentKey(path)
+    }
   }
 
   const renderIcon = (icon: string) => {
