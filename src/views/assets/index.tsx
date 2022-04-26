@@ -5,7 +5,7 @@ type Props = {
 }
 
 const Assets = (props: Props) => {
-  return <div>Assets{props.name}</div>
+  return <div>AssetsAssetsAssetsAssets{props.name}</div>
 }
 
 export default Assets

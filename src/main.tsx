@@ -4,7 +4,7 @@ import { ConfigProvider } from 'antd'
 import zhCN from 'antd/lib/locale/zh_CN'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
-// import reportWebVitals from './reportWebVitals'
+import reportWebVitals from './reportWebVitals'
 import App from './App'
 // import 'antd/dist/antd.less'
 import '@/assets/less/index.less'
@@ -35,4 +35,4 @@ root.render(
 //     <App />
 //   </React.StrictMode>
 // )
-// reportWebVitals()
+reportWebVitals()

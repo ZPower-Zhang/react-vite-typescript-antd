@@ -4,9 +4,9 @@ import { Layout, Spin } from 'antd'
 import { routes } from '@/router'
 import { RouterInterface, IRoute } from '@/router/config'
 
-type suspendProps = {
-  Comp: any
-}
+// type suspendProps = {
+//   Comp: any
+// }
 
 const SuspenseCom: FC<any> = (Comp: any) => (
   <Suspense
