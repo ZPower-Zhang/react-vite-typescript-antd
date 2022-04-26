@@ -8,7 +8,7 @@ type suspendProps = {
   Comp: any
 }
 
-const SuspenseCom: FC<suspendProps> = ({ Comp }) => (
+const SuspenseCom: FC<any> = (Comp: any) => (
   <Suspense
     fallback={
       <div>
