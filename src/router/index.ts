@@ -1,48 +1,69 @@
-import { lazy } from 'react';
-// import {
-//   Navigate,
-//   useRoutes,
-// } from "react-router-dom";
-// import { Spin } from 'antd'
-// import { BasicLayout } from '@/layouts'
-// import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
-// import SuspenseCom from './SuspenseCom'
+import { lazy } from 'react'
+import { BasicLayout, RouterView } from '@/layouts'
 
-import { IRoute } from './config';
+import { IRoute } from './config'
 
 const routesArr = [
   {
-    path: '/ad-overview',
-    name: 'ad-overview',
-    meta: { title: '广告概览', icon: 'MailOutlined' },
-    component: lazy(() => import('views/overview/insight')),
+    path: '/home',
+    name: 'homepage',
+    component: RouterView,
+    meta: { title: '首页', icon: 'HomeOutlined' },
+    routes: [
+      {
+        path: '/home/overview',
+        name: 'overview',
+        component: lazy(() => import('views/homepage/overview')),
+        meta: { title: '概览', icon: '' },
+      },
+      {
+        path: '/home/analysis',
+        name: 'analysis',
+        component: lazy(() => import('views/homepage/analysis')),
+        meta: { title: '分析', icon: '' },
+      },
+    ],
   },
   {
-    path: '/ad-assets',
-    name: 'ad-assets',
-    meta: { title: '广告资产', icon: 'AppstoreOutlined' },
-    component: lazy(() => import('@/views/assets/index')),
+    path: '/assets',
+    name: 'assets',
+    component: lazy(() => import('views/assets/index')),
+    meta: { title: '资产', icon: 'MailOutlined' },
   },
   {
-    path: '/ad-audience',
-    name: 'ad-audience',
-    meta: { title: '广告受众', icon: 'AppstoreOutlined' },
-    component: lazy(() => import('@/views/audience/index')),
+    path: '/audience',
+    name: 'audience',
+    component: lazy(() => import('views/audience/index')),
+    meta: { title: '受众', icon: 'AppstoreOutlined' },
   },
   {
     path: '/systems',
-    name: 'Systems',
+    name: 'systems',
+    component: RouterView,
     meta: { title: '系统管理', icon: 'SettingOutlined' },
-    component: lazy(() => import('@/views/systems/index')),
+    routes: [
+      {
+        path: '/systems/permission',
+        name: 'permission',
+        component: lazy(() => import('views/systems/permission')),
+        meta: { title: '权限', icon: '' },
+      },
+      {
+        path: '/systems/user-info',
+        name: 'userInfo',
+        component: lazy(() => import('views/systems/user')),
+        meta: { title: '用户信息', icon: '' },
+      },
+    ],
   },
-];
+]
 
 const routes: IRoute[] = [
   {
     path: '/',
     name: 'BasicLayout',
-    component: lazy(() => import('@/layouts/BasicLayout')),
-    redirect: '/ad-overview',
+    component: BasicLayout,
+    redirect: '',
     meta: { title: '', icon: '' },
     routes: [
       ...routesArr,
@@ -54,7 +75,7 @@ const routes: IRoute[] = [
       },
     ],
   },
-];
+]
 
 // interface Props {
 //   /** 自定义渲染组件 */
@@ -88,4 +109,4 @@ const routes: IRoute[] = [
 //   return element
 // }
 
-export { routes, routesArr };
+export { routes, routesArr }

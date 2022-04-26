@@ -3,7 +3,7 @@
 // type Props = {}
 
 const Systems = () => {
-  return <div>index</div>;
-};
+  return <div>index</div>
+}
 
-export default Systems;
+export default Systems
