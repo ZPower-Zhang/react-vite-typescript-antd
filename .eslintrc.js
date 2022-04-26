@@ -1,5 +1,5 @@
 module.exports = {
-  "root": true,
+  'root': true,
 	'env': {
 		'browser': true,
 		'es2021': true,
@@ -40,7 +40,7 @@ module.exports = {
     'prefer-const': 0,
     'space-before-function-paren': 'off',
     '@typescript-eslint/no-explicit-any': 0,  //关闭any类型警告:
-    "@typescript-eslint/no-non-null-assertion": 0
+    '@typescript-eslint/no-non-null-assertion': 0
 		// 'no-var': 0, // 禁止使用 var
 	}
 }

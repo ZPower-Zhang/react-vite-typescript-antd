@@ -26,6 +26,6 @@
       "router/*": ["src/router/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", ".eslintrc.js", ".less"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

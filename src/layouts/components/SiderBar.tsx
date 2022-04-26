@@ -38,6 +38,12 @@ let items: MenuProps['items'] = [
 
 const rootSubmenuKeys = ['/home', '/systems']
 
+const subMaps = new Map([
+  ['/', '/home'],
+  ['/home', '/home/overview'],
+  ['/systems', '/systems/permission'],
+])
+
 const SiderBar: FC<Props> = ({ collapsed = false }) => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
@@ -61,11 +67,12 @@ const SiderBar: FC<Props> = ({ collapsed = false }) => {
     }
   }
 
-  const handleLocation = (path: string) => {
-    if (!path || path === '/') {
-      setOpenKeys(['/home'])
-      setCurrentKey('/home/overview')
-      navigate('/home/overview')
+  const handleLocation = (path = '/') => {
+    if (subMaps.has(path)) {
+      const fullPath = subMaps.get(path) || '/home'
+      setOpenKeys([path])
+      setCurrentKey(fullPath)
+      navigate(fullPath)
     } else {
       const subPath = '/' + path.split('/')[1]
       setOpenKeys([subPath])
@@ -102,7 +109,8 @@ const SiderBar: FC<Props> = ({ collapsed = false }) => {
   items = renderMenu(routesArr)
 
   useEffect(() => {
-    handleLocation(pathname)
+    let timer = setTimeout(() => handleLocation(pathname), 0)
+    return () => clearTimeout(timer)
   }, [pathname])
 
   return (

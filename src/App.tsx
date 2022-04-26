@@ -4,13 +4,18 @@ import { Layout, Spin } from 'antd'
 import { routes } from '@/router'
 import { RouterInterface, IRoute } from '@/router/config'
 
-const SuspenseCom: FC<any> = (Comp: any) => (
+type suspendProps = {
+  Comp: any
+}
+
+const SuspenseCom: FC<suspendProps> = ({ Comp }) => (
   <Suspense
     fallback={
       <div>
         <Spin />
       </div>
-    }>
+    }
+  >
     <Comp />
   </Suspense>
 )
