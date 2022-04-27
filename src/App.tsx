@@ -14,8 +14,7 @@ const SuspenseCom: FC<any> = (Comp: any) => (
       <div>
         <Spin />
       </div>
-    }
-  >
+    }>
     <Comp />
   </Suspense>
 )
