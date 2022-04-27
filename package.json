@@ -61,7 +61,7 @@
   },
   "lint-staged": {
     "src/**/*.{css, less}": [
-      "stylelint --fix",
+      "stylelint --fix src/**/*.{css,html,less}",
       "git add --a"
     ],
     "src/**/*.{ts, tsx, js, jsx, json, md}": [
