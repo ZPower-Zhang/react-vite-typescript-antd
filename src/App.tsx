@@ -42,7 +42,7 @@ const RenderRoutes = () => {
   return ele
 }
 
-function App() {
+const App: FC = () => {
   return (
     <Layout className={'layout-container'}>
       <Router>

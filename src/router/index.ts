@@ -1,7 +1,30 @@
 import { lazy } from 'react'
-import { BasicLayout, RouterView } from '@/layouts'
+import { BasicLayout, RouterView, UserLayout } from '@/layouts'
 
 import { IRoute } from './config'
+
+const users = [
+  {
+    path: '/user',
+    exact: false,
+    name: 'user',
+    component: UserLayout,
+    routes: [
+      {
+        path: '/user/login',
+        exact: false,
+        name: 'login',
+        component: lazy(() => import('views/user/login')),
+      },
+      // {
+      //   path: '/user/register',
+      //   exact: false,
+      //   name: 'register',
+      //   component: SuspenseComponent(Register),
+      // },
+    ],
+  },
+]
 
 const routesArr = [
   {
@@ -59,6 +82,7 @@ const routesArr = [
 ]
 
 const routes: IRoute[] = [
+  ...users,
   {
     path: '/',
     name: 'BasicLayout',
