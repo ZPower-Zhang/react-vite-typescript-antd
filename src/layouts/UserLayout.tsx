@@ -6,6 +6,8 @@ import { Outlet } from 'react-router-dom'
 // }
 
 const UserLayout: React.FC<any> = () => {
+  console.log('formRef')
+
   return (
     <div className='user-layout-wrapper'>
       <Outlet />

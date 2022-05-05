@@ -2,8 +2,8 @@ import { FC, useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { Layout, Menu, MenuProps } from 'antd'
 import { HomeOutlined, MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons'
-import { routesArr } from '@/router/index'
-import { RouterInterface, IRoute } from '@/router/config'
+import { asyncRoutes } from '@/router/index'
+import { RouterInterface, IRoute } from '@/router/router.types'
 
 type MenuItem = Required<MenuProps>['items'][number]
 type Props = {
@@ -96,8 +96,8 @@ const SiderBar: FC<Props> = ({ collapsed = false }) => {
   const renderMenu = (menus: IRoute): any => {
     return menus.map((menu: RouterInterface) => {
       let child = []
-      if (menu.routes && menu.routes.length) {
-        child = renderMenu(menu.routes)
+      if (menu.children && menu.children.length) {
+        child = renderMenu(menu.children)
       }
       if (child.length) {
         return getItem(menu.meta.title, menu.path, menu.meta.icon && renderIcon(menu.meta.icon), child)
@@ -106,7 +106,7 @@ const SiderBar: FC<Props> = ({ collapsed = false }) => {
     })
   }
 
-  items = renderMenu(routesArr)
+  items = renderMenu(asyncRoutes)
 
   useEffect(() => {
     let timer = setTimeout(() => handleLocation(pathname), 0)

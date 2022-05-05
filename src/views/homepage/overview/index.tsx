@@ -1,7 +1,18 @@
+import { FC, useState, useLayoutEffect } from 'react'
 import { Button, Descriptions, Carousel } from 'antd'
 // import './overview.module.less'
 
-const Overview = () => {
+const Overview: FC = () => {
+  const [count, setCount] = useState(0)
+  const onHandleBtn = () => {
+    console.log('count1', new Date().getTime())
+    // setTimeout(() => {
+    setCount(count + 1)
+    // }, 2000)
+  }
+  useLayoutEffect(() => {
+    console.log('count2', new Date().getTime())
+  }, [count])
   return (
     <div>
       <Descriptions size='small' column={2}>
@@ -27,7 +38,9 @@ const Overview = () => {
           <h3 className='carousel'>4</h3>
         </div>
       </Carousel>
-      <Button>My Button</Button>
+      <h1>{count}</h1>
+      <h2>{new Date().getTime()}</h2>
+      <Button onClick={onHandleBtn}>My Button</Button>
     </div>
   )
 }

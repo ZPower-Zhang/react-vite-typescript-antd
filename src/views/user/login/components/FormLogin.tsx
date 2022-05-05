@@ -16,7 +16,6 @@ type Options = {
   id: string
   name: string
 }[]
-// type ChangeEventHandler<T = Element> = EventHandler<React.ChangeEvent<T>>
 
 const FormLogin: FC<Props> = ({ curKey }) => {
   const navigate = useNavigate()
@@ -42,11 +41,10 @@ const FormLogin: FC<Props> = ({ curKey }) => {
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo)
   }
-  const handleKeyUp: React.KeyboardEventHandler<HTMLInputElement> = (evt) => {
-    console.info('formRef', formRef)
-    console.info('evtevtevt', evt)
-    console.info('formRef value', formRef?.current)
-  }
+  // const handleKeyUp: React.KeyboardEventHandler<HTMLInputElement> = (evt) => {
+  //   console.info('evt', evt)
+  //   console.info('formRef value', formRef?.current)
+  // }
 
   useEffect(() => {
     console.log('formRef')
@@ -81,10 +79,10 @@ const FormLogin: FC<Props> = ({ curKey }) => {
         </Select>
       </Form.Item>
       <Form.Item name='username' rules={[{ required: true, message: '请输入用户名!' }]}>
-        <Input placeholder='请输入用户名(nzhang)' onKeyUp={handleKeyUp} />
+        <Input placeholder='请输入用户名' type='text' />
       </Form.Item>
       <Form.Item name='password' rules={[{ required: true, message: '请输入密码!' }]}>
-        <Input type='password' placeholder='请输入密码(nzhang)' />
+        <Input type='password' placeholder='请输入密码' />
       </Form.Item>
 
       <Form.Item>

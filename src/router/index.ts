@@ -1,38 +1,29 @@
 import { lazy } from 'react'
 import { BasicLayout, RouterView, UserLayout } from '@/layouts'
+import { RouteProps } from './router.types'
 
-import { IRoute } from './config'
+const userRoutes = {
+  path: '/user',
+  exact: false,
+  name: 'user',
+  component: UserLayout,
+  children: [
+    {
+      path: '/user/login',
+      exact: false,
+      name: 'login',
+      component: lazy(() => import('views/user/login')),
+    },
+  ],
+}
 
-const users = [
-  {
-    path: '/user',
-    exact: false,
-    name: 'user',
-    component: UserLayout,
-    routes: [
-      {
-        path: '/user/login',
-        exact: false,
-        name: 'login',
-        component: lazy(() => import('views/user/login')),
-      },
-      // {
-      //   path: '/user/register',
-      //   exact: false,
-      //   name: 'register',
-      //   component: SuspenseComponent(Register),
-      // },
-    ],
-  },
-]
-
-const routesArr = [
+const asyncRoutes = [
   {
     path: '/home',
     name: 'homepage',
     component: RouterView,
     meta: { title: '首页', icon: 'HomeOutlined' },
-    routes: [
+    children: [
       {
         path: '/home/overview',
         name: 'overview',
@@ -64,7 +55,7 @@ const routesArr = [
     name: 'systems',
     component: RouterView,
     meta: { title: '系统管理', icon: 'SettingOutlined' },
-    routes: [
+    children: [
       {
         path: '/systems/permission',
         name: 'permission',
@@ -81,16 +72,16 @@ const routesArr = [
   },
 ]
 
-const routes: IRoute[] = [
-  ...users,
+const routes: RouteProps[] = [
+  userRoutes,
   {
     path: '/',
     name: 'BasicLayout',
     component: BasicLayout,
     redirect: '',
     meta: { title: '', icon: '' },
-    routes: [
-      ...routesArr,
+    children: [
+      ...asyncRoutes,
       {
         path: '*',
         name: 'NotFound',
@@ -101,36 +92,4 @@ const routes: IRoute[] = [
   },
 ]
 
-// interface Props {
-//   /** 自定义渲染组件 */
-//   Cp: React.ComponentType<any>;
-// }
-
-// const SuspenseCom = (Comp: Component) => {
-//   return (
-//     <Suspense fallback={<div><Spin /></div>}> <Comp /> </Suspense>
-//   )
-// }
-
-// const BackRoutesArr = (routes: IRoute[]) => {
-//   if (routes && routes.length) {
-//     return routes.map((ele, index) => {
-//       return {
-//         path: ele.path,
-//         element: SuspenseCom(ele.component),
-//         children: ele.children && ele.children.length ? BackRoutesArr(ele.children) : null,
-//       }
-//     })
-//   } else {
-//     return []
-//   }
-// }
-
-// const RenderRoutes = () => {
-//   let routeMap = BackRoutesArr(routes)
-//   console.log('routeMap', routeMap);
-//   let element = useRoutes(routeMap)
-//   return element
-// }
-
-export { routes, routesArr }
+export { userRoutes, routes, asyncRoutes }

@@ -31,6 +31,7 @@ export default defineConfig({
     alias: {
       '@': resolve('./src'),
       components: resolve('./src/components'),
+      hooks: resolve('./src/hooks'),
       views: resolve('./src/views'),
       utils: resolve('./src/utils'),
       layouts: resolve('./src/layouts'),

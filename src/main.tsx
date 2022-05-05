@@ -1,5 +1,6 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/lib/locale/zh_CN'
 import moment from 'moment'
@@ -23,9 +24,10 @@ root.render(
           return node.parentNode
         }
         return document.body
-      }}
-    >
-      <App />
+      }}>
+      <Router>
+        <App />
+      </Router>
     </ConfigProvider>
   </React.StrictMode>
 )

@@ -1,53 +1,14 @@
-import { FC, Suspense } from 'react'
-import { BrowserRouter as Router, useRoutes } from 'react-router-dom'
-import { Layout, Spin } from 'antd'
-import { routes } from '@/router'
-import { RouterInterface, IRoute } from '@/router/config'
-
-// type suspendProps = {
-//   Comp: any
-// }
-
-const SuspenseCom: FC<any> = (Comp: any) => (
-  <Suspense
-    fallback={
-      <div>
-        <Spin />
-      </div>
-    }>
-    <Comp />
-  </Suspense>
-)
-
-const backRoutes = (menus: IRoute) => {
-  return menus.map((menu: RouterInterface) => {
-    if (menu.routes) {
-      return {
-        path: menu.path,
-        element: SuspenseCom(menu.component),
-        children: [...backRoutes(menu.routes)],
-      }
-    } else {
-      return {
-        path: menu.path,
-        element: SuspenseCom(menu.component),
-      }
-    }
-  })
-}
-
-const RenderRoutes = () => {
-  let routerArr = backRoutes(routes)
-  const ele = useRoutes(routerArr)
-  return ele
-}
+import { FC } from 'react'
+import { useRoutes } from 'react-router-dom'
+import { Layout } from 'antd'
+import { allRoutes } from '@/router/config'
+import RouterAuthorized from '@/router/Authorized'
 
 const App: FC = () => {
+  const Element = useRoutes(allRoutes)
   return (
     <Layout className={'layout-container'}>
-      <Router>
-        <RenderRoutes />
-      </Router>
+      <RouterAuthorized>{Element}</RouterAuthorized>
     </Layout>
   )
 }
