@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Form, Select, Input, Button, FormInstance } from 'antd'
+import { getRedirectUrl } from '@/utils/index'
 
 type Props = {
   curKey: string
@@ -32,23 +33,25 @@ const FormLogin: FC<Props> = ({ curKey }) => {
     username: '',
     password: '',
   })
+  const redirectUrl = getRedirectUrl()
 
   const onFinish = (values: Values) => {
-    console.log('values', values)
-    window.localStorage.setItem('userInfo', JSON.stringify(values.username))
-    navigate('/home/overview')
+    const userInfo = {
+      name: values.username,
+    }
+    window.localStorage.setItem('userInfo', JSON.stringify(userInfo))
+    navigate(redirectUrl)
   }
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo)
   }
+
   // const handleKeyUp: React.KeyboardEventHandler<HTMLInputElement> = (evt) => {
   //   console.info('evt', evt)
   //   console.info('formRef value', formRef?.current)
   // }
 
   useEffect(() => {
-    console.log('formRef')
-
     setInitialValues({
       active: undefined,
       username: '',

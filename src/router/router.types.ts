@@ -4,10 +4,7 @@ interface RouteProps extends RouteObject {
   name?: string
   component?: any
   redirect?: string
-  meta?: {
-    title?: string
-    icon?: string
-  }
+  meta?: Meta
   children?: RouteProps[]
 }
 

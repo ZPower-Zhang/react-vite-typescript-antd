@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { ConfigProvider } from 'antd'
+import { ConfigProvider, Layout } from 'antd'
 import zhCN from 'antd/lib/locale/zh_CN'
 import moment from 'moment'
 import 'moment/locale/zh-cn'
@@ -26,7 +26,9 @@ root.render(
         return document.body
       }}>
       <Router>
-        <App />
+        <Layout className={'layout-container'}>
+          <App />
+        </Layout>
       </Router>
     </ConfigProvider>
   </React.StrictMode>

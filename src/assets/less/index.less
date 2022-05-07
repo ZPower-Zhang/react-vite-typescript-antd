@@ -9,13 +9,27 @@ body {
   width: 100vw;
   height: 100vh;
 }
-.site-layout .site-layout-background {
-  background: #fff;
-}
-.ant-layout-header {
-  padding: 0 12px !important;
-  .anticon {
-    font-size: 20px;
+.site-layout {
+  .site-layout-background {
+    padding: 0 12px !important;
+    background: #fff;
+    display: flex;
+    .anticon-menu-fold, .anticon-menu-unfold {
+      font-size: 20px;
+      line-height: 64px;
+    }
+    .ant-breadcrumb {
+      line-height: 64px;
+      padding-left: 20px;
+      width: 300px;
+    }
+    .user-right {
+      flex: 1;
+      text-align: right;
+      .name {
+        padding-left: 10px;
+      }
+    }
   }
 }
 .logo {
