@@ -1,119 +1,139 @@
 *,
 html,
 body {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
+
 .layout-container {
-  overflow: hidden;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
+
 .site-layout {
   .site-layout-background {
+    display: flex;
     padding: 0 12px !important;
     background: #fff;
-    display: flex;
-    .anticon-menu-fold, .anticon-menu-unfold {
-      font-size: 20px;
+
+    .anticon-menu-fold,
+    .anticon-menu-unfold {
       line-height: 64px;
+      font-size: 20px;
     }
+
     .ant-breadcrumb {
+      width: 300px;
       line-height: 64px;
       padding-left: 20px;
-      width: 300px;
     }
+
     .user-right {
       flex: 1;
       text-align: right;
+
       .name {
         padding-left: 10px;
       }
     }
   }
 }
+
 .logo {
-  margin: 16px;
   height: 32px;
-  background: rgba(255, 255, 255, 0.3);
+  margin: 16px;
+  background: rgb(255 255 255 / 0.3);
 }
+
 .carousel {
-  background-color: #364d79;
-  line-height: 160px;
-  text-align: center;
-  color: #fff;
   height: 160px;
+  line-height: 160px;
+  color: #fff;
+  text-align: center;
+  background-color: #364d79;
 }
 
 .login-layout-wrapper {
+  position: relative;
   width: 100%;
   height: 100%;
-  position: relative;
+
   .bg-video {
     z-index: 1;
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
+
   .login-window {
     position: absolute;
     top: 50%;
     right: 115px;
-    margin-top: -260px;
     width: 520px;
     padding: 82px 100px 52px;
-    background-color: rgba(0, 0, 0, 0.67);
+    margin-top: -260px;
+    background-color: rgb(0 0 0 / 0.67);
     border-radius: 2px;
-    position: absolute;
-    .title{
-      font-size: 30px;
-      font-family: Lantinghei SC;
-      font-weight: 600;
-      color: #FFFFFF;
-      line-height: 30px;
+
+    .title {
       width: 100%;
+      line-height: 30px;
+      font-size: 30px;
+      font-weight: 600;
+      color: #fff;
       text-align: center;
     }
+
     .ant-tabs {
       .ant-tabs-nav {
         &::before {
           display: none;
         }
+
         &::after {
           border: none !important;
         }
+
         .ant-tabs-tab {
           font-size: 16px;
           color: #c1c1c1;
+
           &:hover {
             color: #fff;
           }
         }
-        .ant-tabs-tab-active .ant-tabs-tab-btn{
-          color: #fff;
+
+        .ant-tabs-tab-active .ant-tabs-tab-btn {
           font-weight: 500;
+          color: #fff;
         }
       }
+
       .ant-form-item {
         margin-top: 30px;
       }
+
       .login-form-button {
+        position: relative;
+        height: 40px;
         padding: 0 15px;
         font-size: 16px;
-        height: 40px;
-        width: 100%;
-        background: linear-gradient(86deg, #234297, #4C8EFA);
-        box-shadow: 0px 7px 41px 2px rgba(0, 78, 255, 0.44);
-        border-radius: 3px;
+        background: linear-gradient(86deg, #234297, #4c8efa);
         border: none;
+        border-radius: 3px;
+        box-shadow: 0 7px 41px 2px rgb(0 78 255 / 0.44);
       }
-      .ant-input, .ant-select-selector {
-        background-color: rgba(0,0,0,.3);
-        border: 1px solid hsla(0,0%,100%,.5);
+
+      .ant-input,
+      .ant-select-selector {
         color: #fff;
+        background-color: rgb(0 0 0 / 0.3);
+        border: 1px solid hsl(0deg 0% 100% / 0.5);
       }
     }
   }
+
   .verify-mask {
     position: fixed;
     top: 0;
@@ -121,29 +141,32 @@ body {
     z-index: 1001;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0,0,0,.3);
-    -webkit-transition: all .5s;
-    transition: all .5s;
+    background-color: rgb(0 0 0 / 0.3);
+    transition: all 0.5s;
+    transition: all 0.5s;
+
     .verify-box {
       position: absolute;
-      box-sizing: border-box;
-      border-radius: 2px;
-      border: 1px solid #e4e7eb;
-      background-color: #fff;
       // box-shadow: 0 0 10px rgb(0 0 0 / 30%);
       top: 50%;
       right: 112px;
+      box-sizing: border-box;
       width: 500px;
+      background-color: #fff;
+      border: 1px solid #e4e7eb;
+      border-radius: 2px;
       transform: translateY(-50%);
-      .verifybox-top {
-        padding: 0 15px;
+
+      .verify-box-top {
         height: 50px;
         line-height: 50px;
-        text-align: left;
+        padding: 0 15px;
         font-size: 16px;
         color: #45494c;
+        text-align: left;
         border-bottom: 1px solid #e4e7eb;
-        .verifybox-close {
+
+        .verify-box-close {
           position: absolute;
           top: 13px;
           right: 9px;
@@ -154,7 +177,8 @@ body {
           cursor: pointer;
         }
       }
-      .verifybox-body {
+
+      .verify-box-body {
         padding: 0;
       }
     }
@@ -162,10 +186,10 @@ body {
 }
 
 .spin-back {
-  width: 100%;
-  height: 100%;
-  display: 'flex';
+  display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
   vertical-align: middle;
 }
